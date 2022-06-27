@@ -1,7 +1,7 @@
 # routing-demo
 Simple routing example with Spring Boot and Docker
 
-## Requires following to build and run the application:
+## Requires the following to build and run the application:
 - JDK 11
 - Maven
 - Docker
