@@ -16,5 +16,4 @@ docker build -t springio/routing-spring-boot-docker .
 docker run -p 8080:8080 springio/routing-spring-boot-docker
 
 ## Open a browser and navigate to:
-http://locahost:8080/
-
+http://localhost:8080/
