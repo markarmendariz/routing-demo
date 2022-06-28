@@ -1,3 +1,5 @@
+// Value object for Suitability Score
+
 package com.example.routing;
 
 public class SuitabilityScore {

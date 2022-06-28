@@ -15,5 +15,5 @@ docker build -t springio/routing-spring-boot-docker .
 ## Run the below at the command line to run the application:
 docker run -p 8080:8080 springio/routing-spring-boot-docker
 
-## Open a browser and navigate to:
+## Open a browser and navigate to test that the server is running:
 http://localhost:8080/
