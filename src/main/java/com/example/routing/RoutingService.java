@@ -23,7 +23,7 @@ public class RoutingService {
 		   base SS.
 	
 	  Assumptions:
-		- Rule #3 only fires if Rule #1 does not fire.
+		- Rule #3 only fires if there more than one common length factors.
 		- Rule #3 common factors are compounded.
 		- Vowels consist of the characters 'a', 'e', 'i', 'o', and 'u'.
 		
@@ -38,22 +38,27 @@ public class RoutingService {
 		// Rule #2 - destination street name length is odd
 		else {
 			score = (double)(driver.length() -  numberOfVowels(driver)) * 1.0 ;
-			
-			// Rule #3 - common length factors only when street length is odd (excludes rule #1 equal to true)
-			if(street.length() == driver.length()) {
-				score = score * 1.5;
-			}
-			
-			if(numberOfVowels(street) == numberOfVowels(driver)) {
-				score = score * 1.5;
-			}
-			
-			int streetNumOfConsonants = street.length() - numberOfVowels(street);
-			int drivertNumOfConsonants = driver.length() - numberOfVowels(driver);
-			
-			if(streetNumOfConsonants == drivertNumOfConsonants) {
-				score = score * 1.5;
-			}
+		}
+		
+		// Rule #3 - more than one common length factors
+		int commonFactors = 0;
+		if(street.length() == driver.length()) {
+			commonFactors += 1;
+		}
+		
+		if(numberOfVowels(street) == numberOfVowels(driver)) {
+			commonFactors += 1;
+		}
+		
+		int streetNumOfConsonants = street.length() - numberOfVowels(street);
+		int drivertNumOfConsonants = driver.length() - numberOfVowels(driver);
+		
+		if(streetNumOfConsonants == drivertNumOfConsonants) {
+			commonFactors += 1;
+		}
+		
+		if(commonFactors > 1) {
+			score *= 1.5;
 		}
 		
 		return Double.valueOf(score).toString();
