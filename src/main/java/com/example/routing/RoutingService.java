@@ -63,6 +63,11 @@ public class RoutingService {
 		return count;
 	}
 	
+	/*
+	 * The assumption is that common factors are that the length of the street name and driver's name are equal; or
+	 * the number of vowels in the street name and driver's name are equal; or the number of consonants in the 
+	 * street name and driver's name are equal.
+	 */
 	private int numberOfCommonFactors(String street, String driver) {
 		int commonFactors = 0;
 		if(street.length() == driver.length()) {
