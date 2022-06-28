@@ -8,7 +8,7 @@ public class RoutingService {
 	}
 	
 	public SuitabilityScore calculateSS(String street, String driver) {
-		String score = calculateScore(street, driver);
+		double score = calculateScore(street, driver);
 		return new SuitabilityScore(score);
 	}
 
@@ -27,7 +27,7 @@ public class RoutingService {
 		- Vowels consist of the characters 'a', 'e', 'i', 'o', and 'u'.
 		
 	 */
-	private String calculateScore(String street, String driver) {
+	private double calculateScore(String street, String driver) {
 		double score = 0.0;
 		
 		// Rule #1 - destination street name length is even	
@@ -46,7 +46,7 @@ public class RoutingService {
 			score *= 1.5;
 		}
 		
-		return Double.valueOf(score).toString();
+		return score;
 	}
 	
 	private int numberOfVowels(String str) {

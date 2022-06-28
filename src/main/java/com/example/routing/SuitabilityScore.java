@@ -3,17 +3,17 @@
 package com.example.routing;
 
 public class SuitabilityScore {
-	private String score;
+	private double score;
 	
-	public SuitabilityScore(String score) {
+	public SuitabilityScore(double score) {
 		this.score = score;
 	}
 
-	public String getScore() {
+	public double getScore() {
 		return score;
 	}
 
-	public void setScore(String score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 }
