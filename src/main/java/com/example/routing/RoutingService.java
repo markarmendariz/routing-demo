@@ -23,7 +23,7 @@ public class RoutingService {
 		   base SS.
 	
 	  Assumptions:
-		- Rule #3 only fires if Rule #3 does not fire.
+		- Rule #3 only fires if Rule #1 does not fire.
 		- Rule #3 common factors are compounded
 		
 	 */
