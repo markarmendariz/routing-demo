@@ -12,6 +12,21 @@ public class RoutingService {
 		return new SuitabilityScore(score);
 	}
 
+	/*
+	   The top-secret algorithm is:
+		- (Rule #1) If the length of the shipment's destination street name is even, the base suitability
+		  score (SS) is the number of vowels in the driver’s name multiplied by 1.5.
+		- (Rule #2) If the length of the shipment's destination street name is odd, the base SS is the
+		  number of consonants in the driver’s name multiplied by 1.
+		- (Rule #3) If the length of the shipment's destination street name shares any common factors
+		  (besides 1) with the length of the driver’s name, the SS is increased by 50% above the
+		   base SS.
+	
+	  Assumptions:
+		- Rule #3 only fires if Rule #3 does not fire.
+		- Rule #3 common factors are compounded
+		
+	 */
 	private String calculateScore(String street, String driver) {
 		double score = 0.0;
 		
@@ -21,12 +36,23 @@ public class RoutingService {
 		}
 		// Rule #2 - destination street name length is odd
 		else {
-			score = (double)(street.length() -  numberOfVowels(driver)) * 1.0 ;
-		}
-		
-		// Rule #3
-		if(street.length() > 1 && street.length() == driver.length()) {
-			score = score * 1.5;
+			score = (double)(driver.length() -  numberOfVowels(driver)) * 1.0 ;
+			
+			// Rule #3 - common length factors only when street length is odd (excludes rule #1 equal to true)
+			if(street.length() == driver.length()) {
+				score = score * 1.5;
+			}
+			
+			if(numberOfVowels(street) == numberOfVowels(driver)) {
+				score = score * 1.5;
+			}
+			
+			int streetNumOfConsonants = street.length() - numberOfVowels(street);
+			int drivertNumOfConsonants = driver.length() - numberOfVowels(driver);
+			
+			if(streetNumOfConsonants == drivertNumOfConsonants) {
+				score = score * 1.5;
+			}
 		}
 		
 		return Double.valueOf(score).toString();
