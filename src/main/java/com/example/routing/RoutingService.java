@@ -25,7 +25,7 @@ public class RoutingService {
 	  Assumptions:
 		- Rule #3 only fires if Rule #1 does not fire.
 		- Rule #3 common factors are compounded.
-		- Vowels consist of the characters 'a', 'e', 'i', and 'u'.
+		- Vowels consist of the characters 'a', 'e', 'i', 'o', and 'u'.
 		
 	 */
 	private String calculateScore(String street, String driver) {
